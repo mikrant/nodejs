@@ -1,7 +1,10 @@
 
-const filesystem=require("fs");
+const Logger = require("./logger");
 
-filesystem.readdir("./",function(err, files) {
-	if(err) console.log("Error", err);
-	else console.log("Result", files);	
+var logger = new Logger();
+
+logger.on("logging", (arguments) =>{
+	console.log(arguments.id, arguments.msg);
 });
+
+logger.remoteLog("Hello to you");
